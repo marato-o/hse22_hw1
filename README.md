@@ -21,7 +21,7 @@
 
 Подрезаем файлы чтения по качеству:\
     platanus_trim sub*\
-    platanus_internal_trim matepairs* matepairs*\
+    platanus_internal_trim matepairs* matepairs*
 
 Работаем с результатами fastqc и производим multiqc:\
     multiqc -o multiqc/ fastqc/
