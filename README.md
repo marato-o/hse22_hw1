@@ -40,4 +40,12 @@
 
 Собираем контиги из подрезанных чтений:\
     platanus assemble -f sub*.trimmed
+    
+Скачиваем файлы с сервера на локальный компьютер:\
+    scp -i /Users/.ssh/bioinf/id_rsa -P 5222 mtomarov@92.242.58.92:/home/mtomarov/out_contig.fa /Users/Marat/Desktop/hw\
+    scp -i /Users/.ssh/bioinf/id_rsa -P 5222 mtomarov@92.242.58.92:/home/mtomarov/out_scaffold.fa /Users/Marat/Desktop/hw\
+    scp -i /Users/.ssh/bioinf/id_rsa -P 5222 mtomarov@92.242.58.92:/home/mtomarov/out_gapClosed.fa /Users/Marat/Desktop/hw\
+    scp -i /Users/.ssh/bioinf/id_rsa -P 5222 mtomarov@92.242.58.92:/home/mtomarov/multiqc.zip /Users/Marat/Desktop/hw\
+    scp -i /Users/.ssh/bioinf/id_rsa -P 5222 mtomarov@92.242.58.92:/home/mtomarov/multiqc.zip /Users/Marat/Desktop/hw
+    
 
