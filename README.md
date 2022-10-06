@@ -99,6 +99,3 @@ https://colab.research.google.com/drive/1ELYo6sOceFQ_bp48jRFRBwEasc98PIZX?usp=sh
 ### Анализ скаффолдов
 ![image](https://user-images.githubusercontent.com/95280619/194399505-4e4c30c7-0611-490f-a828-2f44751344f3.png)
 ![image](https://user-images.githubusercontent.com/95280619/194399587-546734a4-38ce-4a03-a7ba-dbfebff5e4cc.png)
-
-
-## Анализ контигов и скаффолдов 
