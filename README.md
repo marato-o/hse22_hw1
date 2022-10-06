@@ -1,6 +1,6 @@
 # hse22_hw1
 
-## Работа с сервером
+## Работа на сервере
 1. Создаём символические ссылки на файлы с помощью команд:
 ``` bash
 ln -s /usr/share/data-minor-bioinf/assembly/oil_R1.fastq
@@ -57,17 +57,24 @@ multiqc -o cut_trimmed_multiqc/ cut_trimmed/
 ![image](https://user-images.githubusercontent.com/95280619/194337785-98c8fc56-70f4-4574-a700-60be4e0b0667.png)
 ![image](https://user-images.githubusercontent.com/95280619/194337876-1cf31c11-e635-45c1-b3bc-c18eab73f511.png)
 
+
 9. Собираем контиги из подрезанных чтений:
 ``` bash
 platanus assemble -f sub*.trimmed
 ```
-    
-10. Скачиваем файлы с сервера на локальный компьютер:
+
+10. Собираем скаффолды из контигов и подрезанных чтений:
 ``` bash
-scp -i /Users/.ssh/bioinf/id_rsa -P 5222 mtomarov@92.242.58.92:/home/mtomarov/out_contig.fa /Users/Marat/Desktop/hw
-scp -i /Users/.ssh/bioinf/id_rsa -P 5222 mtomarov@92.242.58.92:/home/mtomarov/out_scaffold.fa /Users/Marat/Desktop/hw
-scp -i /Users/.ssh/bioinf/id_rsa -P 5222 mtomarov@92.242.58.92:/home/mtomarov/out_gapClosed.fa /Users/Marat/Desktop/hw
-scp -i /Users/.ssh/bioinf/id_rsa -P 5222 mtomarov@92.242.58.92:/home/mtomarov/multiqc.zip /Users/Marat/Desktop/hw
-scp -i /Users/.ssh/bioinf/id_rsa -P 5222 mtomarov@92.242.58.92:/home/mtomarov/multiqc.zip /Users/Marat/Desktop/hw
+time platanus scaffold -c out_contig.fa -IP1 *.trimmed -OP2 *.int_trimmed
 ```
-## Работа контигами и скаффолдами 
+
+11. Собираем скаффолды с меньшим кол-вом пропусков:
+``` bash
+time platanus gap_close -c out_scaffold.fa -IP1 *.trimmed -OP2 *.int_trimmed
+```
+
+12. Скачиваем файлы с сервера на локальный компьютер:
+``` bash
+scp -i dir/ssh -P X mtomarov@IP:/home/mtomarov/my_file dir
+```
+## Анализ контигов и скаффолдов 
