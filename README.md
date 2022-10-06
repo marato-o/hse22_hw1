@@ -28,7 +28,8 @@
     ls matepairs* | xargs -P 2 -tI{} fastqc -o fastqc {}
     multiqc -o multiqc/ fastqc/
 ```
-тут картинка первой html страницы
+![image](https://user-images.githubusercontent.com/95280619/194337527-e67ec4ca-af03-4b11-878b-d5d704481a89.png)
+![image](https://user-images.githubusercontent.com/95280619/194337657-9a817185-7f8e-48ad-8494-67b0428f1b6a.png)
 
 5. Подрезаем файлы чтения по качеству:
 ``` bash
@@ -53,7 +54,8 @@
     mkdir cut_trimmed_multiqc
     multiqc -o cut_trimmed_multiqc/ cut_trimmed/
 ```
-тут вторая картинка
+![image](https://user-images.githubusercontent.com/95280619/194337785-98c8fc56-70f4-4574-a700-60be4e0b0667.png)
+![image](https://user-images.githubusercontent.com/95280619/194337876-1cf31c11-e635-45c1-b3bc-c18eab73f511.png)
 
 9. Собираем контиги из подрезанных чтений:
 ``` bash
