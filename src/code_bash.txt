@@ -1,0 +1,30 @@
+ln -s /usr/share/data-minor-bioinf/assembly/oil_R1.fastq
+ln -s /usr/share/data-minor-bioinf/assembly/oil_R2.fastq
+ln -s /usr/share/data-minor-bioinf/assembly/oilMP_S4_L001_R1_001.fastq
+ln -s /usr/share/data-minor-bioinf/assembly/oilMP_S4_L001_R2_001.fastq
+
+mkdir fastqc, multiqc
+seqtk sample -721 oil_R1.fastq 5000000 > sub1.fastq
+seqtk sample -721 oil_R2.fastq 5000000 > sub2.fastq
+seqtk sample -721 oilMP_S4_L001_R1_001.fastq 1500000 > matepairs_1.fastq
+seqtk sample -721 oilMP_S4_L001_R2_001.fastq 1500000 > matepairs_2.fastq
+
+ls sub* | xargs -P 2 -tI{} fastqc -o fastqc {}
+ls matepairs* | xargs -P 2 -tI{} fastqc -o fastqc {}
+multiqc -o multiqc/ fastqc/
+
+platanus_trim sub*
+platanus_internal_trim matepairs* matepairs*
+
+rm *.fastq
+
+mkdir cut_trimmed
+ls sub*.trimmed | xargs -P 2 -tI{} fastqc -o cut_trimmed/ {}
+ls matepairs*.*trimmed | xargs -P 2 -tI{} fastqc -o cut_trimmed/ {}
+
+mkdir cut_trimmed_multiqc
+multiqc -o cut_trimmed_multiqc/ cut_trimmed/
+
+platanus assemble -f sub*.trimmed
+time platanus scaffold -c out_contig.fa -IP1 *.trimmed -OP2 *.int_trimmed
+time platanus gap_close -c out_scaffold.fa -IP1 *.trimmed -OP2 *.int_trimmed
