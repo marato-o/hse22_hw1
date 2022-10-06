@@ -78,3 +78,4 @@ time platanus gap_close -c out_scaffold.fa -IP1 *.trimmed -OP2 *.int_trimmed
 scp -i dir/ssh -P X mtomarov@IP:/home/mtomarov/my_file dir
 ```
 ## Анализ контигов и скаффолдов 
+https://colab.research.google.com/drive/1ELYo6sOceFQ_bp48jRFRBwEasc98PIZX?usp=sharing
